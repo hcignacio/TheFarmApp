@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>The Chicken Test</title>
+
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12 mt-3 mb-3">
+			<h1 style="text-align: center">
+				The Farm
+			</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<h3>
+				Add Chicken
+			</h3> 
+			<form role="form">
+				<div class="form-group">
+					<label for="addChicken">
+						Please, Insert Farm ID:
+					</label>
+					<input type="number" class="form-control" id="farm_id">
+				</div>
+			</form>
+			<button type="button" class="btn btn-success">
+				Button
+			</button>
+		</div>
+		<div class="col-md-4">
+			<h3>
+				Delete Chicken
+			</h3> 
+			<form role="form">
+				<div class="form-group">
+					 
+					<label for="deleteChicken">
+						Please, Insert Farm ID:
+					</label>
+					<input type="number" class="form-control" id="farm_id">
+				</div>
+				<div class="form-group">
+					 
+					<label for="deleteChicken">
+						Please, Insert Chicken ID:
+					</label>
+					<input type="number" class="form-control" id="chicken_id">
+				</div>
+				
+			</form>
+			<button type="button" class="btn btn-success">
+				Button
+			</button>
+		</div>
+		<div class="col-md-4">
+			<h3>
+				Add Egg
+			</h3> 
+			<form role="form">
+				<div class="form-group">
+					<label for="addEgg">
+						Please, Insert Chicken ID:
+					</label>
+					<input type="number" class="form-control" id="chicken_id">
+				</div>
+			</form>
+			<button type="button" class="btn btn-success">
+				Button
+			</button>
+		</div>
+	</div>
+</div>
+
+    <script src="vendor/jquery/jquery-3.4.1.min.js"></script>
+    <script src="vendor/popper/popper.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
