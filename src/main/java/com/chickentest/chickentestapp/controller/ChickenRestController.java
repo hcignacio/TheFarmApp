@@ -7,18 +7,18 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.chickentest.chickentestapp.service.ChickenService;
+import com.chickentest.chickentestapp.serviceimpl.ChickenServiceImpl;
 
 @org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api")
-@ComponentScan({"com.chickentest.chickentestapp.service"})
+@ComponentScan({"com.chickentest.chickentestapp.serviceimpl"})
 public class ChickenRestController {
 
     @Autowired
-    private ChickenService chickenService;
+    private ChickenServiceImpl chickenServiceImpl;
     
     @RequestMapping(path = "/chickens", method = RequestMethod.GET)
     public List<Object> getChickens(){
-    	return chickenService.getData();
+    	return chickenServiceImpl.getData();
     }
 }
