@@ -12,5 +12,8 @@ public interface ChickenService {
 	public List<Object> getData();
 	
 	public Chicken getChickenData(Chicken chicken);
-
+	
+	public void addChicken(Chicken chicken);		// ChickenDAO?
+	
+	public void deleteChicken(Chicken chicken);		// ChickenDAO?
 }

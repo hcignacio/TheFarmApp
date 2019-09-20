@@ -12,5 +12,4 @@ public interface EggService {
 	public List<Object> getData();
 	
 	public Egg getEggData(Egg egg);
-	
 }
