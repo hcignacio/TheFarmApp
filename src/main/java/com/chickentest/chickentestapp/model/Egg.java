@@ -42,7 +42,7 @@ public class Egg {
 		this.id = id;
 	}
 	
-	public Date getcreationDate() {
+	public Date getCreationDate() {
 		return this.creationDate;
 	}
 	

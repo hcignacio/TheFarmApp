@@ -19,6 +19,6 @@ public class FarmRestController {
     
     @RequestMapping(path = "/farm", method = RequestMethod.GET)
     public List<Object> getFarm(){
-    	return farmService.getData();
+    	return farmService.getFarms();
     }
 }

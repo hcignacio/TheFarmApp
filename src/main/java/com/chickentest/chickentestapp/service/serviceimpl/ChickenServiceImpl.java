@@ -10,6 +10,7 @@ import com.chickentest.chickentestapp.dto.ChickenDTO;
 import com.chickentest.chickentestapp.model.Chicken;
 import com.chickentest.chickentestapp.model.Farm;
 import com.chickentest.chickentestapp.repository.ChickenRepository;
+import com.chickentest.chickentestapp.repository.EggRepository;
 import com.chickentest.chickentestapp.repository.FarmRepository;
 import com.chickentest.chickentestapp.service.ChickenService;
 
@@ -21,9 +22,12 @@ public class ChickenServiceImpl implements ChickenService {
 	
     @Autowired
     private FarmRepository farmRepository;
+    
+    @Autowired
+    private EggRepository eggRepository;
 
     @Override
-    public List<Object> getData(){
+    public List<Object> getChickens(){
     	return chickenRepository
     			.findAll()
     			.stream()
@@ -32,9 +36,16 @@ public class ChickenServiceImpl implements ChickenService {
     }
     
     @Override
-    public Chicken getChickenData(Chicken chicken){
+    public ChickenDTO getChickenData(Chicken chicken){
     	Chicken currentChicken = chickenRepository.findById(chicken.getId()).get();
-    	return currentChicken;
+    	ChickenDTO chickenDTO = new ChickenDTO();
+    	
+    	chickenDTO.setId(currentChicken.getId());
+    	chickenDTO.setFarmId(currentChicken.getFarm().getId());
+    	chickenDTO.setJoinDate(currentChicken.getJoinDate());
+    	chickenDTO.setName(currentChicken.getName());
+    	
+    	return chickenDTO;
     }
     
 	@Override
@@ -58,7 +69,7 @@ public class ChickenServiceImpl implements ChickenService {
     	chickenDTOAdded.setId(chickenAdded.getId());
     	chickenDTOAdded.setJoinDate(chickenDTO.getJoinDate());
     	chickenDTOAdded.setName(chickenDTO.getName());
-    	chickenDTO.setFarmId(chickenDTO.getFarmId());
+    	chickenDTOAdded.setFarmId(chickenDTO.getFarmId());
     	chickenDTOAdded.setInFarm(chickenDTO.getInFarm());
 		
 		return chickenDTOAdded;
@@ -67,6 +78,17 @@ public class ChickenServiceImpl implements ChickenService {
 
 	@Override
 	public ChickenDTO delete(ChickenDTO chickenDTO) {
+        
+        Chicken currentChicken = chickenRepository.findById(chickenDTO.getId()).get();
+        Farm currentFarm = farmRepository.findById(chickenDTO.getFarmId()).get();
+                
+        currentChicken.setInFarm(false);
+        currentFarm.deleteChicken(currentChicken);
+
+        eggRepository.deleteAll(currentChicken.getEggs());
+        chickenRepository.delete(currentChicken);
+        farmRepository.save(currentFarm);
+        
 		return chickenDTO;
 	}
 

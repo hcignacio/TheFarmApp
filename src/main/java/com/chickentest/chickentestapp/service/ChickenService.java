@@ -9,9 +9,9 @@ import com.chickentest.chickentestapp.model.Chicken;
 
 public interface ChickenService {
 	
-	public List<Object> getData();
+	public List<Object> getChickens();
 	
-	public Chicken getChickenData(Chicken chicken);
+	public ChickenDTO getChickenData(Chicken chicken);
 	
 	public ChickenDTO add(ChickenDTO chickenDTO);
 	

@@ -10,7 +10,9 @@ public class EggDTO {
 	
 	private Date creationDate = new Date();
 	
-	private Chicken chicken;
+	// private Chicken chicken;
+	
+	private long chickenId;
 
 	public long getId() {
 		return id;
@@ -28,6 +30,15 @@ public class EggDTO {
 		this.creationDate = creationDate;
 	}
 
+	public long getChickenId() {
+		return chickenId;
+	}
+
+	public void setChickenId(long chickenId) {
+		this.chickenId = chickenId;
+	}
+
+	/*
 	public Chicken getChicken() {
 		return chicken;
 	}
@@ -35,4 +46,5 @@ public class EggDTO {
 	public void setChicken(Chicken chicken) {
 		this.chicken = chicken;
 	}
+	*/
 }

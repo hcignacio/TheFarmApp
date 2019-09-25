@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.chickentest.chickentestapp.dto.FarmDTO;
 import com.chickentest.chickentestapp.model.Farm;
 import com.chickentest.chickentestapp.repository.FarmRepository;
 import com.chickentest.chickentestapp.service.FarmService;
@@ -16,7 +17,7 @@ public class FarmServiceImpl implements FarmService{
 	@Autowired
     private FarmRepository farmRepository;
 	   
-    public List<Object> getData(){
+    public List<Object> getFarms(){
     	return farmRepository
     			.findAll()
     			.stream()
@@ -24,9 +25,15 @@ public class FarmServiceImpl implements FarmService{
     			.collect(Collectors.toList());
     }
     
-    public Farm getFarmData(Farm farm){
-    	Farm currentFarm = farmRepository.findById(farm.getId()).get();;
-    	return currentFarm;
+    public FarmDTO getFarmData(Farm farm){
+    	Farm currentFarm = farmRepository.findById(farm.getId()).get();
+    	FarmDTO farmDTO = new FarmDTO();
+    	
+    	farmDTO.setId(currentFarm.getId());
+    	farmDTO.setCreationDate(currentFarm.getCreationDate());
+    	farmDTO.setName(currentFarm.getName());
+    	farmDTO.setChickens(currentFarm.getChickens());
+    	
+    	return farmDTO;
     }
-
 }

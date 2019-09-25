@@ -79,7 +79,6 @@ public class RestController {
    
     	return dto;
     }  
-    */
     
     @RequestMapping(path ="/{farm_id}/add_chicken", method = RequestMethod.POST)
     public ResponseEntity<Map<String, Object>> addChicken(@PathVariable("farm_id") long farm_id, @RequestBody Chicken chicken){
@@ -116,10 +115,6 @@ public class RestController {
             message.put("error", "ERROR: that farm does not exist");
             return new ResponseEntity<>(message, HttpStatus.CONFLICT);
         }
-        
-        /*
-         * DELETE-BY-ID
-         */
 
         Chicken currentChicken = chickenRepository.findById(chicken.getId()).get();
         Farm currentFarm = farmRepository.findById(farm_id).get();
@@ -133,7 +128,7 @@ public class RestController {
         
         message.put("OK", "Chicken deleted");
         return new ResponseEntity<>(message, HttpStatus.CREATED);
-    }    
+    }
     
     @RequestMapping(path ="/{chicken_id}/add_egg", method = RequestMethod.POST)
     public ResponseEntity<Map<String, Object>> addEgg(@PathVariable("chicken_id") long chicken_id, @RequestBody Egg egg){
@@ -159,4 +154,5 @@ public class RestController {
         message.put("OK", "Egg added");
         return new ResponseEntity<>(message, HttpStatus.CREATED);
     }
+    */
 }

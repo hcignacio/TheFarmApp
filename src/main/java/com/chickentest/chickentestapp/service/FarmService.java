@@ -2,13 +2,12 @@ package com.chickentest.chickentestapp.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
+import com.chickentest.chickentestapp.dto.FarmDTO;
 import com.chickentest.chickentestapp.model.Farm;
 
 public interface FarmService {
 	
-	public List<Object> getData();
+	public List<Object> getFarms();
 	
-	public Farm getFarmData(Farm farm);
+	public FarmDTO getFarmData(Farm farm);
 }
