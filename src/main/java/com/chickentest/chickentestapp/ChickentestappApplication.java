@@ -34,6 +34,10 @@ public class ChickentestappApplication {
 			Farm farmB = new Farm();
 			Farm farmC = new Farm();
 			
+			farm.setName("Granja 1");
+			farmB.setName("Granja 2");
+			farmC.setName("Granja 3");
+			
 			farmRepository.save(farm);
 			farmRepository.save(farmB);
 			farmRepository.save(farmC);

@@ -23,6 +23,8 @@ public class Farm {
     @GenericGenerator(name = "native", strategy = "native")
 	private long id;
 	
+	private String name;
+	
 	private Date creationDate = new Date();
 	
 	@OneToMany(mappedBy = "farm", fetch = FetchType.EAGER)
@@ -42,7 +44,15 @@ public class Farm {
 	public void setId(long id) {
 		this.id = id;
 	}
-	
+		
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public Date getCreationDate() {
 		return this.creationDate;
 	}

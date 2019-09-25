@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import com.chickentest.chickentestapp.model.Egg;
 
-@Service
 public interface EggService {
 
 	public List<Object> getData();

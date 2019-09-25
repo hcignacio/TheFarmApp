@@ -4,16 +4,16 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.chickentest.chickentestapp.dto.ChickenDTO;
 import com.chickentest.chickentestapp.model.Chicken;
 
-@Service
 public interface ChickenService {
 	
 	public List<Object> getData();
 	
 	public Chicken getChickenData(Chicken chicken);
 	
-	public void addChicken(Chicken chicken);		// ChickenDAO?
+	public ChickenDTO add(ChickenDTO chickenDTO);
 	
-	public void deleteChicken(Chicken chicken);		// ChickenDAO?
+	public ChickenDTO delete(ChickenDTO chickenDTO);
 }

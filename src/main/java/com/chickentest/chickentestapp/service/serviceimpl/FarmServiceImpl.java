@@ -8,9 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.chickentest.chickentestapp.model.Farm;
 import com.chickentest.chickentestapp.repository.FarmRepository;
+import com.chickentest.chickentestapp.service.FarmService;
 
 @Service
-public class FarmServiceImpl{
+public class FarmServiceImpl implements FarmService{
 	
 	@Autowired
     private FarmRepository farmRepository;
