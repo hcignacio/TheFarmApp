@@ -7,18 +7,18 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.chickentest.chickentestapp.serviceimpl.ChickenServiceImpl;
+import com.chickentest.chickentestapp.service.ChickenService;
 
 @org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api")
-@ComponentScan({"com.chickentest.chickentestapp.serviceimpl"})
+@ComponentScan({"com.chickentest.chickentestapp.service"})
 public class ChickenRestController {
 
     @Autowired
-    private ChickenServiceImpl chickenServiceImpl;
+    private ChickenService chickenService;		// inyectar el servicio, no la implementación
     
     @RequestMapping(path = "/chickens", method = RequestMethod.GET)
     public List<Object> getChickens(){
-    	return chickenServiceImpl.getData();
+    	return chickenService.getData();
     }
 }

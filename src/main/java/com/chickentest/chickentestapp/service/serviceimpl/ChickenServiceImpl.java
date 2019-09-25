@@ -1,17 +1,12 @@
-package com.chickentest.chickentestapp.serviceimpl;
+package com.chickentest.chickentestapp.service.serviceimpl;
 
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.chickentest.chickentestapp.model.Chicken;
-import com.chickentest.chickentestapp.model.Farm;
 import com.chickentest.chickentestapp.repository.ChickenRepository;
 import com.chickentest.chickentestapp.service.ChickenService;
 
