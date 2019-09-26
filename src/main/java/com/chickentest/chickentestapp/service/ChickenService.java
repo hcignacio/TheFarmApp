@@ -13,6 +13,8 @@ public interface ChickenService {
 	
 	public ChickenDTO getChickenData(Chicken chicken);
 	
+	public ChickenDTO edit(ChickenDTO chickenDTO);
+	
 	public ChickenDTO add(ChickenDTO chickenDTO);
 	
 	public ChickenDTO delete(ChickenDTO chickenDTO);

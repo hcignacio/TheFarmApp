@@ -1,5 +1,6 @@
 package com.chickentest.chickentestapp.controller;
 
+/*
 import com.chickentest.chickentestapp.model.*;
 import com.chickentest.chickentestapp.repository.*;
 
@@ -12,11 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.*;
-
+*/
+/*
 @org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api")
+*/
 public class RestController {
-
+	/*
     @Autowired
     private FarmRepository farmRepository;
     
@@ -26,7 +29,6 @@ public class RestController {
     @Autowired
     private EggRepository eggRepository;
     
-    /*
     @RequestMapping("/farm")
     public List<Object> getFarm(){
     	return (farmRepository

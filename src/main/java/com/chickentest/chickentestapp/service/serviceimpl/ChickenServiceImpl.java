@@ -49,6 +49,36 @@ public class ChickenServiceImpl implements ChickenService {
     }
     
 	@Override
+	public ChickenDTO edit(ChickenDTO chickenDTO) {
+		
+		Chicken chickenToEdit = chickenRepository.findById(chickenDTO.getId()).get();
+    	ChickenDTO chickenDTOEdited = new ChickenDTO();
+        Farm currentFarm = farmRepository.findById(chickenDTO.getFarmId()).get();
+            	
+        /*
+        // Map CHICKEN
+        chickenAdded.setFarm(currentFarm);
+    	chickenAdded.setJoinDate(chickenDTO.getJoinDate());
+    	chickenAdded.setName(chickenDTO.getName());
+    	chickenAdded.setInFarm(chickenDTO.getInFarm());
+    	chickenRepository.save(chickenAdded);
+    	
+    	// Map FARM
+    	currentFarm.addChicken(chickenAdded);
+    	farmRepository.save(currentFarm);
+    	
+    	// Map CHICKEN-DTO
+    	chickenDTOAdded.setId(chickenAdded.getId());
+    	chickenDTOAdded.setJoinDate(chickenDTO.getJoinDate());
+    	chickenDTOAdded.setName(chickenDTO.getName());
+    	chickenDTOAdded.setFarmId(chickenDTO.getFarmId());
+    	chickenDTOAdded.setInFarm(chickenDTO.getInFarm());
+    	*/
+		
+		return chickenDTOEdited;
+	}
+    
+	@Override
 	public ChickenDTO add(ChickenDTO chickenDTO) {
     	Chicken chickenAdded = new Chicken();
     	ChickenDTO chickenDTOAdded = new ChickenDTO();
@@ -90,8 +120,5 @@ public class ChickenServiceImpl implements ChickenService {
         farmRepository.save(currentFarm);
         
 		return chickenDTO;
-	}
-
-
-	
+	}	
 }

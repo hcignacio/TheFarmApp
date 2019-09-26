@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,12 +20,14 @@ public class EggRestController {
 
     @Autowired
     private EggService eggService;
-    
+
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(path = "/eggs", method = RequestMethod.GET)
     public List<Object> getEggs(){
     	return eggService.getData();
     }
-    
+
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(path ="/add_egg", method = RequestMethod.POST)
     public EggDTO addEgg(@RequestBody EggDTO eggDTO){
     	EggDTO eggDTOAdded = eggService.add(eggDTO);

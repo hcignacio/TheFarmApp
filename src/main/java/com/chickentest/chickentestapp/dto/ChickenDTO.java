@@ -1,6 +1,10 @@
 package com.chickentest.chickentestapp.dto;
 
 import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.chickentest.chickentestapp.repository.ChickenRepository;
 //import java.util.LinkedList;
 //import java.util.List;
 
@@ -8,6 +12,9 @@ import java.util.Date;
 //import com.chickentest.chickentestapp.model.Farm;
 
 public class ChickenDTO {
+	
+	@Autowired
+	ChickenRepository chickenRepository;
 
 	private long id;
 	
@@ -22,6 +29,8 @@ public class ChickenDTO {
 	private long farmId;
 	
 	private String name;
+	
+	private int eggsAmount;
 	
 	public ChickenDTO() {
 	}
@@ -84,5 +93,15 @@ public class ChickenDTO {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public int getEggsAmount() {
+		// REPOSITORY
+		
+		return eggsAmount;
+	}
+
+	public void setEggsAmount(int eggsAmount) {
+		this.eggsAmount = eggsAmount;
 	}	
 }
