@@ -46,25 +46,49 @@ public class EggServiceImpl implements EggService{
     
     @Override
 	public EggDTO add(EggDTO eggDTO) {
-    	Egg eggAdded = new Egg();
-    	EggDTO eggDTOAdded = new EggDTO();
+    	Egg eggToAdd = new Egg();
+    	EggDTO eggToAddDTO = new EggDTO();
     	Chicken currentChicken = chickenRepository.findById(eggDTO.getChickenId()).get();
     	
         // Map EGG
-        eggAdded.setChicken(currentChicken);
-    	eggAdded.setCreationDate(eggDTO.getCreationDate());
-    	eggRepository.save(eggAdded);
+    	eggToAdd.setChicken(currentChicken);
+    	eggToAdd.setCreationDate(eggDTO.getCreationDate());
+    	eggRepository.save(eggToAdd);
     	
     	// Map CHICKEN
-    	currentChicken.addEgg(eggAdded);
+    	currentChicken.addEgg(eggToAdd);
     	chickenRepository.save(currentChicken);
     	
     	// Map EGG-DTO
-    	eggDTOAdded.setId(eggAdded.getId());
-    	eggDTOAdded.setCreationDate(eggDTO.getCreationDate());
-    	eggDTOAdded.setChickenId(eggDTO.getChickenId());
+    	eggToAddDTO.setId(eggToAdd.getId());
+    	eggToAddDTO.setCreationDate(eggDTO.getCreationDate());
+    	eggToAddDTO.setChickenId(eggDTO.getChickenId());
 		
-		return eggDTOAdded;
+		return eggToAddDTO;
 		
+	}
+
+	@Override
+	public EggDTO addById(long chickenId) {
+    	Chicken currentChicken = chickenRepository.findById(chickenId).get();
+    	Egg eggToAdd = new Egg();
+		EggDTO eggToAddDTO = new EggDTO();
+		
+		currentChicken.addEgg(eggToAdd);
+		
+        // Map EGG
+		eggToAdd.setChicken(currentChicken);
+    	eggRepository.save(eggToAdd);
+    	
+    	// Map CHICKEN
+    	currentChicken.addEgg(eggToAdd);
+    	chickenRepository.save(currentChicken);
+    	
+    	// Map EGG-DTO
+    	eggToAddDTO.setId(eggToAdd.getId());
+    	eggToAddDTO.setCreationDate(eggToAdd.getCreationDate());
+    	eggToAddDTO.setChickenId(eggToAdd.getChicken().getId());
+    	
+		return eggToAddDTO;
 	}
 }

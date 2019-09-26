@@ -33,4 +33,11 @@ public class EggRestController {
     	EggDTO eggDTOAdded = eggService.add(eggDTO);
     	return eggDTOAdded;
     }
+    
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(path ="/add_egg_by_id", method = RequestMethod.POST)
+    public EggDTO addEggById(@RequestBody long chickenId){
+    	EggDTO eggDTOAdded = eggService.addById(chickenId);
+    	return eggDTOAdded;
+    }
 }

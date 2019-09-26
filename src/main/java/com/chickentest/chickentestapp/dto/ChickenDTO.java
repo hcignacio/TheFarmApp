@@ -3,11 +3,7 @@ package com.chickentest.chickentestapp.dto;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
-
-import com.chickentest.chickentestapp.model.Chicken;
 import com.chickentest.chickentestapp.repository.ChickenRepository;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 //import java.util.LinkedList;
 //import java.util.List;
 

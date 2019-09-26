@@ -12,4 +12,6 @@ public interface EggService {
 	public EggDTO getEggData(Egg egg);
 	
 	public EggDTO add(EggDTO eggDTO);
+	
+	public EggDTO addById(long chickenId);
 }
