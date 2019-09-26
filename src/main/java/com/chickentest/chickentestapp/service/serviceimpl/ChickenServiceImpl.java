@@ -44,6 +44,7 @@ public class ChickenServiceImpl implements ChickenService {
     	chickenDTO.setFarmId(currentChicken.getFarm().getId());
     	chickenDTO.setJoinDate(currentChicken.getJoinDate());
     	chickenDTO.setName(currentChicken.getName());
+    	chickenDTO.setEggsAmount(currentChicken.getEggsAmount());
     	
     	return chickenDTO;
     }
