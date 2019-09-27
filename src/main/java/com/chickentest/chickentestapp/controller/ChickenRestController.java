@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.chickentest.chickentestapp.dto.ChickenDTO;
+import com.chickentest.chickentestapp.dto.EggDTO;
 import com.chickentest.chickentestapp.service.ChickenService;
 
 @RestController
@@ -40,6 +41,13 @@ public class ChickenRestController {
     public ChickenDTO addChicken(@RequestBody ChickenDTO chickenDTO){
     	ChickenDTO chickenToAddDTO = chickenService.add(chickenDTO);
     	return chickenToAddDTO;
+    }
+    
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(path ="/add_chicken_by_id", method = RequestMethod.POST)
+    public ChickenDTO addChickenById(@RequestBody long farmId){
+    	ChickenDTO chickenDTOAdded = chickenService.addById(farmId);
+    	return chickenDTOAdded;
     }
 
     @CrossOrigin(origins = "http://localhost:4200")

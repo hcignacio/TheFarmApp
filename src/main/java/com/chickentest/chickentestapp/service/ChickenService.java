@@ -2,6 +2,7 @@ package com.chickentest.chickentestapp.service;
 
 import java.util.List;
 import com.chickentest.chickentestapp.dto.ChickenDTO;
+import com.chickentest.chickentestapp.dto.EggDTO;
 import com.chickentest.chickentestapp.model.Chicken;
 
 public interface ChickenService {
@@ -15,4 +16,6 @@ public interface ChickenService {
 	public ChickenDTO add(ChickenDTO chickenDTO);
 	
 	public ChickenDTO delete(ChickenDTO chickenDTO);
+
+	public ChickenDTO addById(long farmId);
 }

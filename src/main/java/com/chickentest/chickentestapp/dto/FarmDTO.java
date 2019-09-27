@@ -18,7 +18,7 @@ public class FarmDTO {
 	
 	int ChickensAmount;
 	
-	int eggsAmountTotal;
+	int eggsAmount;
 
 	public long getId() {
 		return id;
@@ -60,11 +60,11 @@ public class FarmDTO {
 		ChickensAmount = chickensAmount;
 	}
 
-	public int getEggsAmountTotal() {
-		return eggsAmountTotal;
+	public int getEggsAmount() {
+		return eggsAmount;
 	}
 
-	public void setEggsAmountTotal(int eggsAmountTotal) {
-		this.eggsAmountTotal = eggsAmountTotal;
+	public void setEggsAmount(int eggsAmount) {
+		this.eggsAmount = eggsAmount;
 	}
 }

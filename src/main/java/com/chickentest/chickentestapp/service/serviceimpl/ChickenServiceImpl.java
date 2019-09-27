@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.chickentest.chickentestapp.dto.ChickenDTO;
+import com.chickentest.chickentestapp.dto.EggDTO;
 import com.chickentest.chickentestapp.model.Chicken;
+import com.chickentest.chickentestapp.model.Egg;
 import com.chickentest.chickentestapp.model.Farm;
 import com.chickentest.chickentestapp.repository.ChickenRepository;
 import com.chickentest.chickentestapp.repository.EggRepository;
@@ -98,6 +100,30 @@ public class ChickenServiceImpl implements ChickenService {
 		return chickenDTOAdded;
 		
 	}
+	
+	@Override
+	public ChickenDTO addById(long farmId) {
+		Farm currentFarm = farmRepository.findById(farmId).get();
+    	Chicken chickenToAdd = new Chicken();
+		ChickenDTO chickenToAddDTO = new ChickenDTO();
+		
+		//currentFarm.addChicken(chickenToAdd);
+		
+        // Map CHICKEN
+		chickenToAdd.setFarm(currentFarm);
+    	chickenRepository.save(chickenToAdd);
+    	
+    	// Map FARM
+    	currentFarm.addChicken(chickenToAdd);
+    	farmRepository.save(currentFarm);
+    	
+    	// Map CHICKEN-DTO
+    	chickenToAddDTO.setId(chickenToAdd.getId());
+    	chickenToAddDTO.setJoinDate(chickenToAdd.getJoinDate());
+    	chickenToAddDTO.setFarmId(currentFarm.getId());
+    	
+		return chickenToAddDTO;
+	}	
 
 	@Override
 	public ChickenDTO delete(ChickenDTO chickenDTO) {
@@ -113,5 +139,5 @@ public class ChickenServiceImpl implements ChickenService {
         farmRepository.save(currentFarm);
         
 		return chickenDTO;
-	}	
+	}
 }

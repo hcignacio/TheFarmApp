@@ -10,4 +10,8 @@ public interface FarmService {
 	public List<Object> getFarms();
 	
 	public FarmDTO getFarmData(Farm farm);
+
+	public FarmDTO add(FarmDTO farmDTO);
+
+	public FarmDTO delete(FarmDTO farmDTO);
 }

@@ -74,7 +74,7 @@ public class EggServiceImpl implements EggService{
     	Egg eggToAdd = new Egg();
 		EggDTO eggToAddDTO = new EggDTO();
 		
-		currentChicken.addEgg(eggToAdd);
+		//currentChicken.addEgg(eggToAdd);
 		
         // Map EGG
 		eggToAdd.setChicken(currentChicken);
