@@ -77,4 +77,25 @@ public class FarmServiceImpl implements FarmService{
         
 		return farmDTO;
 	}
+
+	@Override
+	public FarmDTO edit(long farm_id, FarmDTO farmDTO) {
+		Farm farmToEdit = farmRepository.findById(farm_id).get();
+    	FarmDTO farmToEditDTO = new FarmDTO();
+        //Farm currentFarm = farmRepository.findById(chickenDTO.getFarmId()).get();
+        
+        // Map FARM
+    	farmToEdit.setName(farmDTO.getName());
+    	farmRepository.save(farmToEdit);
+    	
+    	// Map FARM
+    	// currentFarm.addChicken(chickenAdded);
+    	//farmRepository.save(currentFarm);
+    	
+    	// Map FARM-DTO
+    	farmToEditDTO.setName(farmDTO.getName());
+    	
+		
+		return farmToEditDTO;
+	}
 }

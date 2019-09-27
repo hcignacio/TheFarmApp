@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.chickentest.chickentestapp.dto.ChickenDTO;
-import com.chickentest.chickentestapp.dto.EggDTO;
 import com.chickentest.chickentestapp.service.ChickenService;
 
 @RestController

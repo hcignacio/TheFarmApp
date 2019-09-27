@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,8 +29,15 @@ public class FarmRestController {
     }
     
     @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(path ="edit_farm/{farm_id}", method = RequestMethod.POST)
+    public FarmDTO editFarm(@PathVariable ("farm_id") long farm_id, @RequestBody FarmDTO farmDTO){
+    	FarmDTO farmToEditDTO = farmService.edit(farm_id, farmDTO);
+    	return farmToEditDTO;
+    }
+    
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(path ="/add_farm", method = RequestMethod.POST)
-    public FarmDTO addChicken(@RequestBody FarmDTO farmDTO){
+    public FarmDTO addFarm(@RequestBody FarmDTO farmDTO){
     	FarmDTO farmToAddDTO = farmService.add(farmDTO);
     	return farmToAddDTO;
     }
