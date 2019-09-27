@@ -12,8 +12,10 @@ import com.chickentest.chickentestapp.repository.ChickenRepository;
 
 public class ChickenDTO {
 	
+	/*
 	@Autowired
 	ChickenRepository chickenRepository;
+	*/
 
 	private long id;
 	

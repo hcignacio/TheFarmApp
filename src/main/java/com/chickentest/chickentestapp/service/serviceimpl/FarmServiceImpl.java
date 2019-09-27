@@ -33,6 +33,8 @@ public class FarmServiceImpl implements FarmService{
     	farmDTO.setCreationDate(currentFarm.getCreationDate());
     	farmDTO.setName(currentFarm.getName());
     	farmDTO.setChickens(currentFarm.getChickens());
+    	farmDTO.setChickensAmount(currentFarm.getChickensAmount());
+    	farmDTO.setEggsAmountTotal(currentFarm.getEggsAmountTotal());
     	
     	return farmDTO;
     }

@@ -15,6 +15,10 @@ public class FarmDTO {
 	private Date creationDate = new Date();
 	
 	private List<Chicken> chickens = new LinkedList<Chicken>();
+	
+	int ChickensAmount;
+	
+	int eggsAmountTotal;
 
 	public long getId() {
 		return id;
@@ -46,5 +50,21 @@ public class FarmDTO {
 
 	public void setChickens(List<Chicken> chickens) {
 		this.chickens = chickens;
+	}
+	
+	public int getChickensAmount() {
+		return ChickensAmount;
+	}
+
+	public void setChickensAmount(int chickensAmount) {
+		ChickensAmount = chickensAmount;
+	}
+
+	public int getEggsAmountTotal() {
+		return eggsAmountTotal;
+	}
+
+	public void setEggsAmountTotal(int eggsAmountTotal) {
+		this.eggsAmountTotal = eggsAmountTotal;
 	}
 }

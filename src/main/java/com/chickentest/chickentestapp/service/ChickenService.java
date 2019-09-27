@@ -10,7 +10,7 @@ public interface ChickenService {
 	
 	public ChickenDTO getChickenData(Chicken chicken);
 	
-	public ChickenDTO edit(ChickenDTO chickenDTO);
+	public ChickenDTO edit(long farm_id, long chicken_id ,ChickenDTO chickenDTO);
 	
 	public ChickenDTO add(ChickenDTO chickenDTO);
 	
