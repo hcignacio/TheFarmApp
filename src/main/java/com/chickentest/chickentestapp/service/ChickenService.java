@@ -4,7 +4,7 @@ import java.util.List;
 import com.chickentest.chickentestapp.dto.ChickenDTO;
 import com.chickentest.chickentestapp.dto.EggDTO;
 import com.chickentest.chickentestapp.model.Chicken;
-
+ 
 public interface ChickenService {
 	
 	public List<Object> getChickens();

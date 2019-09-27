@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.chickentest.chickentestapp.dto.EggDTO;
 import com.chickentest.chickentestapp.model.Egg;
-
+ 
 public interface EggService {
 
 	public List<Object> getData();
@@ -15,3 +15,4 @@ public interface EggService {
 	
 	public EggDTO addById(long chickenId);
 }
+ 

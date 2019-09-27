@@ -1,5 +1,5 @@
 package com.chickentest.chickentestapp.dto;
-
+ 
 import java.util.Date;
 
 import com.chickentest.chickentestapp.model.Chicken;

@@ -1,5 +1,5 @@
 package com.chickentest.chickentestapp.dto;
-
+ 
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
