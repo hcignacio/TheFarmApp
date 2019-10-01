@@ -45,8 +45,8 @@ public class ChickenRestController {
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(path ="/add_chicken_by_id", method = RequestMethod.POST)
     public ChickenDTO addChickenById(@RequestBody long farmId){
-    	ChickenDTO chickenDTOAdded = chickenService.addById(farmId);
-    	return chickenDTOAdded;
+    	ChickenDTO chickenToAddDTO = chickenService.addById(farmId);
+    	return chickenToAddDTO;
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
