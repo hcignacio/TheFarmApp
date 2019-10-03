@@ -75,29 +75,42 @@ public class ChickenServiceImpl implements ChickenService {
     
 	@Override
 	public ChickenDTO add(ChickenDTO chickenDTO) {
-    	Chicken chickenAdded = new Chicken();
-    	ChickenDTO chickenDTOAdded = new ChickenDTO();
+    	Chicken chickenToAdd = new Chicken();
+    	ChickenDTO chickenToAddDTO = new ChickenDTO();
         Farm currentFarm = farmRepository.findById(chickenDTO.getFarmId()).get();
     	
         // Map CHICKEN
-        chickenAdded.setFarm(currentFarm);
-    	chickenAdded.setJoinDate(chickenDTO.getJoinDate());
-    	chickenAdded.setName(chickenDTO.getName());
-    	chickenAdded.setInFarm(chickenDTO.getInFarm());
-    	chickenRepository.save(chickenAdded);
+        chickenToAdd.setFarm(currentFarm);
+        chickenToAdd.setJoinDate(chickenDTO.getJoinDate());
+        chickenToAdd.setName(chickenDTO.getName());
+        chickenToAdd.setInFarm(chickenDTO.getInFarm());
+    	chickenRepository.save(chickenToAdd);
     	
     	// Map FARM
-    	currentFarm.addChicken(chickenAdded);
+    	currentFarm.addChicken(chickenToAdd);
     	farmRepository.save(currentFarm);
     	
     	// Map CHICKEN-DTO
-    	chickenDTOAdded.setId(chickenAdded.getId());
-    	chickenDTOAdded.setJoinDate(chickenDTO.getJoinDate());
-    	chickenDTOAdded.setName(chickenDTO.getName());
-    	chickenDTOAdded.setFarmId(chickenDTO.getFarmId());
-    	chickenDTOAdded.setInFarm(chickenDTO.getInFarm());
+    	chickenToAddDTO.setId(chickenToAdd.getId());
+    	chickenToAddDTO.setJoinDate(chickenDTO.getJoinDate());
+    	
+    	String chickenName;
+    	
+    	if(chickenDTO.getName().equals("")) {
+	    	int chickenNumber = currentFarm.getChickensAmount() + 1;
+			chickenName = currentFarm.getName().concat("'s chicken n°") + chickenNumber;
+    	}
+    	else {
+    		chickenName = chickenDTO.getName();
+    	}
 		
-		return chickenDTOAdded;
+    	chickenToAdd.setName(chickenName);
+    	
+    	chickenToAddDTO.setName(chickenDTO.getName());
+    	chickenToAddDTO.setFarmId(chickenDTO.getFarmId());
+    	chickenToAddDTO.setInFarm(chickenDTO.getInFarm());
+		
+		return chickenToAddDTO;
 		
 	}
 	
@@ -110,6 +123,11 @@ public class ChickenServiceImpl implements ChickenService {
 		//currentFarm.addChicken(chickenToAdd);
 		
         // Map CHICKEN
+	
+		int chickenNumber = currentFarm.getChickensAmount() + 1;
+		String chickenName = currentFarm.getName().concat("'s chicken n°") + chickenNumber;
+		
+    	chickenToAdd.setName(chickenName);
 		chickenToAdd.setFarm(currentFarm);
     	chickenRepository.save(chickenToAdd);
     	

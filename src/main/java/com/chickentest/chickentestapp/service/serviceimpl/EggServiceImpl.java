@@ -8,11 +8,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.chickentest.chickentestapp.dto.ChickenDTO;
 import com.chickentest.chickentestapp.dto.EggDTO;
 import com.chickentest.chickentestapp.model.Chicken;
 import com.chickentest.chickentestapp.model.Egg;
+import com.chickentest.chickentestapp.model.Farm;
 import com.chickentest.chickentestapp.repository.ChickenRepository;
 import com.chickentest.chickentestapp.repository.EggRepository;
+import com.chickentest.chickentestapp.repository.FarmRepository;
 import com.chickentest.chickentestapp.service.EggService;
 
 @Service
@@ -23,6 +26,9 @@ public class EggServiceImpl implements EggService{
 	
 	@Autowired
 	private ChickenRepository chickenRepository;
+	
+	@Autowired
+	private FarmRepository farmRepository;
 
     @RequestMapping(path = "/eggs", method = RequestMethod.GET)
     public List<Object> getData(){
@@ -90,5 +96,58 @@ public class EggServiceImpl implements EggService{
     	eggToAddDTO.setChickenId(eggToAdd.getChicken().getId());
     	
 		return eggToAddDTO;
+	}
+
+	@Override
+	public EggDTO delete(EggDTO eggDTO) {
+		
+		Egg currentEgg = eggRepository.findById(eggDTO.getId()).get();
+        Chicken currentChicken = chickenRepository.findById(eggDTO.getChickenId()).get();
+                
+        currentChicken.deleteEgg(currentEgg);
+
+        eggRepository.delete(currentEgg);
+        chickenRepository.save(currentChicken);
+		
+		return eggDTO;
+	}
+
+	
+	
+	// BORRAR
+	
+	@Override
+	public ChickenDTO born(EggDTO eggDTO) {
+		
+		//Elimino el Egg
+		Egg currentEgg = eggRepository.findById(eggDTO.getId()).get();
+        Chicken currentChicken = chickenRepository.findById(eggDTO.getChickenId()).get();
+		Farm currentFarm = farmRepository.findById(currentChicken.getFarm().getId()).get();
+                
+        currentChicken.deleteEgg(currentEgg);
+
+        eggRepository.delete(currentEgg);
+        chickenRepository.save(currentChicken);
+        
+        
+        // Creo la Chicken
+        Chicken chickenToBorn = new Chicken();
+		ChickenDTO chickenToBornDTO = new ChickenDTO();
+
+		//int eggNumber = currentChicken.getEggsAmount() + 1;
+		String chickenName =  "egg of " + currentChicken.getName();
+		
+		chickenToBorn.setName(chickenName);
+		chickenToBorn.setFarm(currentFarm);
+    	chickenRepository.save(chickenToBorn);
+    	
+    	currentFarm.addChicken(chickenToBorn);
+    	farmRepository.save(currentFarm);
+    	
+    	chickenToBornDTO.setId(chickenToBorn.getId());
+    	chickenToBornDTO.setJoinDate(chickenToBorn.getJoinDate());
+    	chickenToBornDTO.setFarmId(chickenToBorn.getFarm().getId());
+		
+		return chickenToBornDTO;
 	}
 }

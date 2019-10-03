@@ -24,6 +24,7 @@ public class ChickentestappApplication {
 		SpringApplication.run(ChickentestappApplication.class, args);
 	}
 	
+	
 	@Bean
 	public CommandLineRunner initDataGamePlayer(FarmRepository farmRepository,
 												ChickenRepository chickenRepository,
@@ -80,4 +81,5 @@ public class ChickentestappApplication {
 			eggRepository.save(egg34);
 		};
 	}
+	
 }

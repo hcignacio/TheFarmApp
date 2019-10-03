@@ -3,6 +3,8 @@ package com.chickentest.chickentestapp.model;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -24,6 +26,7 @@ public class Chicken {
     @GenericGenerator(name = "native", strategy = "native")
 	private long id;
 	
+	@Column(name = "join_date")
 	private Date joinDate = new Date();
 
 	private boolean inFarm = true;
@@ -131,5 +134,9 @@ public class Chicken {
 	
 	public int getEggsAmount() {
 		return this.eggs.size();
+	}
+	
+	public void deleteEgg(Egg egg){
+		eggs.remove(egg);
 	}
 }
